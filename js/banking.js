@@ -1,16 +1,41 @@
+// common function 
+function getInputValue() {
+    const depositInput = document.getElementById('deposit-input');
+    const depositString = depositInput.value;
+    const depositVal = parseFloat(depositString);
+    depositInput.value = '';
+    return depositVal;
+}
+
+function getInnerTextValue() {
+    const depositTotal = document.getElementById('deposit-total');
+    const depositTotalText = depositTotal.innerText;
+    const depositTotalBal = parseFloat(depositTotalText);
+    return depositTotalBal;
+}
+
+function setNewTotalBal() {
+    const newBal = document.getElementById('deposit-total');
+    return newBal;
+}
+
+
 //deposit
 document.getElementById('deposit-btn').addEventListener('click', function () {
 
-    const depositInput = document.getElementById('deposit-input');
-    const depositString = depositInput.value;
-    const depositValue = parseFloat(depositString);
-
-    const depositTotal = document.getElementById('deposit-total');
-    const depositTotalText = depositTotal.innerText;
-    const depositTotalVal = parseFloat(depositTotalText);
+    // const depositInput = document.getElementById('deposit-input');
+    // const depositString = depositInput.value;
+    // const depositValue = parseFloat(depositString);
+    const depositValue = getInputValue();
+    const depositTotalVal = getInnerTextValue();
+    // const depositTotal = document.getElementById('deposit-total');
+    // const depositTotalText = depositTotal.innerText;
+    // const depositTotalVal = parseFloat(depositTotalText);
 
     const newDepositBal = depositTotalVal + depositValue;
-    depositTotal.innerText = newDepositBal;
+    setNewTotalBal().innerText = newDepositBal;
+    //console.log(newDepositBal);
+    //depositTotal.innerText = newDepositBal;
 
 
     // update balance
@@ -21,7 +46,7 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
     console.log(currentNewBal);
     current.innerText = currentNewBal;
 
-    depositInput.value = '';
+    // depositInput.value = '';
 
 })
 
